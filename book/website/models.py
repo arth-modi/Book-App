@@ -13,7 +13,7 @@ class Users(models.Model):
 class Authors(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
-    telephone = models.PositiveIntegerField(max_length=10, le)
+    telephone = models.PositiveIntegerField(max_length=10)
     address = models.TextField(max_length=255)
     author = models.ManyToManyField("self")
     followers = models.ForeignKey(Users, on_delete=models.CASCADE)
