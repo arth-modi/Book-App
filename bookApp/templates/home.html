@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with dem="Abcbc&gt;dsb" %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            
+            {% comment %} {% autoescape on %}
+            <h3>Books with price &gt; {{price}}</h3>
+            {% endautoescape %} {% endcomment %}
+            
+        </tr>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Author</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in book_list %}
+        {% comment %} {% if i.price > price %} {% endcomment %}
+        <tr>
+            <td style='color: {% cycle 'red' 'green' %}'>{{i.title}}</td>
+            <td>{{i.genre}}</td>
+            <td>{{i.author}}</td>
+            <td>{{i.price}}</td>
+        </tr>
+        {% comment %} {% endif %} {% endcomment %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endwith %}
+{% regroup cars by brand as newlist %}
+
+
+{% for x in newlist %}
+  <h1>{{ x.grouper }}</h1>
+  {% for y in x.list %}
+    <p>{{ y.model }}: {{ y.year }}</p>
+  {% endfor %}
+{% endfor %}
+{% endblock content %}
+
+

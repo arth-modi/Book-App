@@ -44,4 +44,18 @@ class Books(models.Model):
     def __str__(self):
         return self.title
     
+class Book2(models.Model):
+    title = models.CharField(max_length=100)
+    genre = models.CharField(max_length=200)
+    price = models.IntegerField(null=True)
+    published_date = models.DateField()
+    content = models.JSONField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name="website_book2_related", related_query_name="website_book2s")
+    publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE, related_name='books3', related_query_name='books3')
+    
+    def __str__(self):
+        return self.title
+    
     
